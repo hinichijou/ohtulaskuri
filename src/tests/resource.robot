@@ -9,6 +9,11 @@ ${BROWSER}   chromium
 ${HEADLESS}  false
 
 *** Keywords ***
+Initialize Tests
+    Open And Configure Browser
+    Set Counter  0
+    Get Text  body  *=  nappia painettu 0 kertaa
+
 Open And Configure Browser
     IF  $HEADLESS == 'true'
         New Browser  browser=${BROWSER}  headless=True
@@ -17,3 +22,9 @@ Open And Configure Browser
     END
     New Context
     New Page  about:blank
+
+Set Counter
+    [Arguments]  ${value}
+    Go To  ${HOME_URL}
+    Fill Text  input[name="value"]  ${value}
+    Click  [type=submit] >> text=aseta
