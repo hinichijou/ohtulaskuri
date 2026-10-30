@@ -14,3 +14,7 @@ class Counter:
 
     def reset(self):
         self.value = self._initial_value
+
+    def set_value(self, value: int):
+        # Ei määritetty, mutta oletetaan, ettei laskurin arvo ole järkevää olla negatiivinen
+        self.value = max(0, value)
